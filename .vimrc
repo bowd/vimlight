@@ -1,10 +1,10 @@
 " The Number of plugins in spf13 is too damn high! 
 
 " General settings / overrides {
-  " Remap leader
 	let mapleader = ","
+	set pastetoggle=<F2>
+	set nocompatible
 
-	" Tab settings
 	set tabstop=2
 	set softtabstop=2
 	set shiftwidth=2
@@ -24,7 +24,6 @@
 	set backupdir=~/.vim/tmp/backup
 	set directory=~/.vim/tmp/swap
 
-	set nocompatible              " be iMproved
 " }
 
 
