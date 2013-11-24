@@ -1,3 +1,6 @@
+" Remap leader
+let mapleader = ","
+
 " Tab settings
 set tabstop=2
 set softtabstop=2
@@ -20,6 +23,7 @@ set directory=~/.vim/tmp/swap
 
 " Bundles
 set nocompatible              " be iMproved
+
 filetype off                  " required!
 
 set rtp+=~/.vim/bundle/vundle/
@@ -45,6 +49,20 @@ set laststatus=2
 map <C-e> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen = 1
+
+" Fugitive {
+		nnoremap <silent> <leader>gs :Gstatus<CR>
+		nnoremap <silent> <leader>gd :Gdiff<CR>
+		nnoremap <silent> <leader>gc :Gcommit<CR>
+		nnoremap <silent> <leader>gb :Gblame<CR>
+		nnoremap <silent> <leader>gl :Glog<CR>
+		nnoremap <silent> <leader>gp :Git push<CR>
+		nnoremap <silent> <leader>gr :Gread<CR>:GitGutter<CR>
+		nnoremap <silent> <leader>gw :Gwrite<CR>:GitGutter<CR>
+		nnoremap <silent> <leader>ge :Gedit<CR>
+		nnoremap <silent> <leader>gg :GitGutterToggle<CR>
+"}
+
 
 " .vimrc.local includes special user defined configuration options
 " This should always be at the end of the file.
