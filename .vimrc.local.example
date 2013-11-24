@@ -1,0 +1,19 @@
+" Abbreviations
+iab hbe <C-O>,ac{{ }}<Left><Left><Left><C-O>,ac
+
+" Force shell to be bash instead of fish
+set shell=/bin/bash
+
+" Find closest makefile
+fun! PathToMakefile()
+    let crt_path = ""
+    while !filereadable(getcwd() . '/' . crt_path . 'Makefile') && resolve(getcwd() . '/' . crt_path) != '/'
+        let crt_path = "../" . crt_path
+    endwhile
+    return resolve(getcwd() . '/' . crt_path)
+endf
+
+let g:ClosestMakefile = PathToMakefile()
+let &makeprg = "make -C " . g:ClosestMakefile
+
+
