@@ -1,4 +1,5 @@
-" The Number of plugins in spf13 is too damn high! 
+" The Number of plugins in spf13 is too damn high!
+"                               - Bogdan Dumitru
 
 " General settings / overrides {
 	let mapleader = ","
@@ -23,13 +24,9 @@
 	" Backup files
 	set backupdir=~/.vim/tmp/backup
 	set directory=~/.vim/tmp/swap
-
 " }
 
-
-
 " Bundle config {
-
 	filetype off              
 
 	set rtp+=~/.vim/bundle/vundle/
