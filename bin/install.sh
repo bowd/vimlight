@@ -3,6 +3,7 @@
 set -e
 
 BACKUP_DIR="~/.vim.bak"
+REPO="git@github.com:bogdan-dumitru/vimlight.git"
 
 function backup_config {
 	# Check if there's already a backup
@@ -21,6 +22,33 @@ function backup_config {
 }
 
 function setup_config {
+	# Clone repo into ~/.vim
+	git clone $REPO  ~/.vim
+
+	# Link .vimrc file
+	ln -s ~/.vim/.vimrc ~/.vimrc
+
+	# Create .vimrc.local from example?
+	finish="-1"
+	while [ "$finish" = '-1' ]; do
+		finish="1"
+		read -p "Do you want to setup .vimrc.local from the example one provided (https://github.com/bogdan-dumitru/vimlight/blob/master/.vimrc.local.example)? [Yn] " yn
+		case $yn in
+			""|[Yy] ) cp ~/.vimrc.local.example ~/.vimrc.local ;;
+			[Nn]    )  touch ~/.vimrc.local ;;
+			*       ) finish="-1" ;;
+		esac
+	done
+
+	# Create an empty bundle.local
+	touch ~/.vimrc.bundle.local
+
+	# Install bundles
+	vim -c "BundleInstall"
+
+	echo "Setup complete."
+	echo "Add your personal vim config to ~/.vimrc.local"
+	echo "Add additional bundles to ~/.vimrc.bundle.local"
 }
 
 function main {
@@ -31,5 +59,3 @@ function main {
 }
 
 main
-
-
