@@ -5,27 +5,31 @@ set -e
 BACKUP_DIR=~/.vim.bak
 REPO="git@github.com:bogdan-dumitru/vimlight.git"
 
-GREEN="\e[32m"
-RED="\e[31m"
-YELLOW="\e[33m"
-RESET="\e[39m"
-INFO="[$GREEN""info""$RESET]"
-ERROR="[$RED""error""$RESET]"
+GREEN='\033[32m'
+RED='\033[31m'
+YELLOW='\033[33m'
+RESET='\033[39m'
 
+function info {
+	echo -e "[${GREEN}info${RESET}] $1"
+}
+function error {
+	echo -e "[${RED}error${RESET}] $1"
+}
 
 function backup_config {
 	# Check if there's already a backup
 	if [ -e "$BACKUP_DIR" ]; then
-		echo -e "$ERROR $BACKUP_DIR exists. Please manually rotate / remove the current backup and try again."
+		error "$BACKUP_DIR exists. Please manually rotate / remove the current backup and try again.$RESET"
 		exit
 	fi
 
 	# Create the backup dir
-	echo -e "$INFO Backing up current vim configuration to $GREEN $BACKUP_DIR $RESET"
+	info "Backing up current vim configuration to $GREEN $BACKUP_DIR $RESET"
 	mkdir "$BACKUP_DIR"
 	# Move all vim related folders to backup
 	for entry in `ls -d ~/.vim* | grep -v $BACKUP_DIR`; do
-		echo -e "$INFO     $entry"
+		info "     $entry"
 		mv "$entry" $BACKUP_DIR
 	done
 }
@@ -33,17 +37,17 @@ function backup_config {
 function setup_config {
 	# Clone repo into ~/.vim
 	echo ""
-	echo -e "$INFO Downloading vimlight from github..."
+	info "Downloading vimlight from github..."
 	git clone $REPO  ~/.vim
 
 	# Link .vimrc file
 	echo ""
-	echo -e "$INFO Linking .vimrc to ~"
+	info "Linking .vimrc to ~"
 	ln -s ~/.vim/.vimrc ~/.vimrc
 
 	# Create .vimrc.local from example?
 	echo ""
-	echo -e "$INFO Creating ~/.vimrc.local"
+	info "Creating ~/.vimrc.local"
 	finish="-1"
 	while [ "$finish" = '-1' ]; do
 		finish="1"
@@ -56,23 +60,23 @@ function setup_config {
 	done
 
 	echo ""
-	echo -e "$INFO Creating ~/.vimrc.bundles.local"
+	info "Creating ~/.vimrc.bundles.local"
 	# Create an empty bundle.local
 	touch ~/.vimrc.bundles.local
 
 	# Setup Vundle
 	echo ""
-	echo -e "$INFO Downloading the vundle plugin from github..."
+	info "Downloading the vundle plugin from github..."
 	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 	# Install bundles
 	echo ""
-	echo -e "$INFO Installing bundles"
+	info "Installing bundles"
 	vim +BundleInstall +qall
 
-	echo -e "$GREEN""Setup complete.""$RESET"
-	echo -e "$YELLOW""Add your personal vim config to ~/.vimrc.local""$RESET"
-	echo -e "$YELLOW""Add additional bundles to ~/.vimrc.bundle.local""$RESET"
+	echo -e "${GREEN}Setup complete.$RESET"
+	echo -e "${YELLOW}Add your personal vim config to ~/.vimrc.local"
+	echo -e "Add additional bundles to ~/.vimrc.bundle.local$RESET"
 }
 
 function main {
