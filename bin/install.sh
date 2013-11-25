@@ -36,34 +36,31 @@ function backup_config {
 
 function setup_config {
 	# Clone repo into ~/.vim
-	echo ""
 	info "Downloading vimlight from github..."
 	git clone $REPO  ~/.vim
 
 	# Link .vimrc file
-	echo ""
 	info "Linking .vimrc to ~"
 	ln -s ~/.vim/.vimrc ~/.vimrc
 
 	# Create .vimrc.local from example?
-	echo ""
 	info "Creating ~/.vimrc.local from example"
 	cp ~/.vim/.vimrc.local.example ~/.vimrc.local
 
-	echo ""
 	info "Creating ~/.vimrc.bundles.local"
 	# Create an empty bundle.local
 	touch ~/.vimrc.bundles.local
 
 	# Setup Vundle
-	echo ""
 	info "Downloading the vundle plugin from github..."
 	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 	# Install bundles
 	echo ""
-	info "Installing bundles"
+	info "Installing bundles $YELLOW IGNORE THE VIM ERROR $RESET"
 	vim +BundleInstall +qall
+
+	clear
 
 	echo -e "${GREEN}Setup complete.$RESET"
 	echo -e "${YELLOW}Add your personal vim config to ~/.vimrc.local"
