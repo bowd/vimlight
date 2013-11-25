@@ -60,6 +60,7 @@ function setup_config {
 	info "Installing bundles $YELLOW IGNORE THE VIM ERROR $RESET"
 	vim +BundleInstall +qall
 
+	reset
 	clear
 
 	echo -e "${GREEN}Setup complete.$RESET"
