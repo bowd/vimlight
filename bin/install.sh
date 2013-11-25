@@ -2,22 +2,22 @@
 
 set -e
 
-BACKUP_DIR="~/.vim.bak"
+BACKUP_DIR=~/.vim.bak
 REPO="git@github.com:bogdan-dumitru/vimlight.git"
 
 function backup_config {
 	# Check if there's already a backup
-	if [ -e $BACKUP_DIR ]; then
+	if [ -e "$BACKUP_DIR" ]; then
 		echo "$BACKUP_DIR exists. Please manually rotate / remove the current backup and try again."
 		exit
 	fi
 
 	# Create the backup dir
-	mkdir $BACKUP_DIR
+	mkdir "$BACKUP_DIR"
 	# Move all vim related folders to backup
-	for entry in `ls ~/.vim* | grep -v $BACKUP_DIR`; do
+	for entry in `ls -d ~/.vim* | grep -v $BACKUP_DIR`; do
 		echo "Moving $entry to $BACKUP_DIR..."
-		mv $entry $BACKUP_DIR/
+		mv "$entry" $BACKUP_DIR
 	done
 }
 
@@ -34,7 +34,7 @@ function setup_config {
 		finish="1"
 		read -p "Do you want to setup .vimrc.local from the example one provided (https://github.com/bogdan-dumitru/vimlight/blob/master/.vimrc.local.example)? [Yn] " yn
 		case $yn in
-			""|[Yy] ) cp ~/.vimrc.local.example ~/.vimrc.local ;;
+			""|[Yy] ) cp ~/.vim/.vimrc.local.example ~/.vimrc.local ;;
 			[Nn]    )  touch ~/.vimrc.local ;;
 			*       ) finish="-1" ;;
 		esac
