@@ -3,5 +3,5 @@
 ## Installation
 
 ```bash
-curl https://raw.github.com/bogdan-dumitru/vimlight/master/bin/install.sh | sh
+curl https://raw.github.com/bogdan-dumitru/vimlight/master/bin/install.sh | bash
 ```
