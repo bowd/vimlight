@@ -22,8 +22,9 @@
 	map <Leader>7 7gt
 
 	" Backup files
-	set backupdir=~/.vim/tmp/backup
+	set backupdir=~/.vim/tmp/undo
 	set directory=~/.vim/tmp/swap
+	set viewdir=~/.vim/tmp/view
 " }
 
 " Bundle config {

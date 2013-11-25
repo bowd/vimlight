@@ -51,6 +51,11 @@ function setup_config {
 	# Create an empty bundle.local
 	touch ~/.vimrc.bundles.local
 
+	info "Creating tmp for swapfiles, undos and views"
+	mkdir -p ~/.vim/tmp/swap
+	mkdir -p ~/.vim/tmp/undo
+	mkdir -p ~/.vim/tmp/view
+
 	# Setup Vundle
 	info "Downloading the vundle plugin from github..."
 	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
