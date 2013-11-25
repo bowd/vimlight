@@ -48,7 +48,7 @@ function setup_config {
 	# Create .vimrc.local from example?
 	echo ""
 	info "Creating ~/.vimrc.local from example"
-	cp ~/.vim/.vimrc.local.example ~/.vimrc.local ;;
+	cp ~/.vim/.vimrc.local.example ~/.vimrc.local
 
 	echo ""
 	info "Creating ~/.vimrc.bundles.local"
