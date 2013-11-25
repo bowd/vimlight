@@ -47,23 +47,8 @@ function setup_config {
 
 	# Create .vimrc.local from example?
 	echo ""
-	info "Creating ~/.vimrc.local"
-	info "here"
-	finish="-1"
-	info "here"
-	while [ "$finish" = "-1" ]; do
-		info "here"
-		finish="1"
-		info "here"
-		read -p "Do you want to setup .vimrc.local from the example one provided (https://github.com/bogdan-dumitru/vimlight/blob/master/.vimrc.local.example)? [Yn] " yn
-		info "here"
-		case $yn in
-			""|[Yy] ) cp ~/.vim/.vimrc.local.example ~/.vimrc.local ;;
-			[Nn]    )  touch ~/.vimrc.local ;;
-			*       ) finish="-1" ;;
-		esac
-		info "here"
-	done
+	info "Creating ~/.vimrc.local from example"
+	cp ~/.vim/.vimrc.local.example ~/.vimrc.local ;;
 
 	echo ""
 	info "Creating ~/.vimrc.bundles.local"
