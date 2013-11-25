@@ -23,12 +23,12 @@ for entry in `ls -d ~/.vim* | grep -v $BACKUP_DIR`; do
 	rm -rf $entry
 done
 
-if [ -d $BACKUP_DIR]; then
-	info "Restoring old configs from $YELLOW $BACKUP_DIR $RESET"
+if [ -d $BACKUP_DIR ]; then
+	info "Restoring old configs from ${YELLOW}$BACKUP_DIR $RESET"
 	mv $BACKUP_DIR/.* ~/.
 	rm -rf $BACKUP_DIR
 else
 	error "No backup to restore"
 fi
 
-echo -e "$YELLOW Done. $RESET"
+echo -e "${YELLOW}Done.$RESET"
