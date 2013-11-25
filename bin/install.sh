@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 BACKUP_DIR=~/.vim.bak
 REPO="git@github.com:bogdan-dumitru/vimlight.git"
 
