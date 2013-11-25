@@ -49,7 +49,7 @@ function setup_config {
 	echo ""
 	info "Creating ~/.vimrc.local"
 	finish="-1"
-	while [ "$finish" = '-1' ]; do
+	while [ "$finish" = "-1" ]; do
 		finish="1"
 		read -p "Do you want to setup .vimrc.local from the example one provided (https://github.com/bogdan-dumitru/vimlight/blob/master/.vimrc.local.example)? [Yn] " yn
 		case $yn in
