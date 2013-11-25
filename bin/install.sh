@@ -58,7 +58,6 @@ function setup_config {
 		read -p "Do you want to setup .vimrc.local from the example one provided (https://github.com/bogdan-dumitru/vimlight/blob/master/.vimrc.local.example)? [Yn] " yn
 		info "here"
 		case $yn in
-		echo "here"
 			""|[Yy] ) cp ~/.vim/.vimrc.local.example ~/.vimrc.local ;;
 			[Nn]    )  touch ~/.vimrc.local ;;
 			*       ) finish="-1" ;;
