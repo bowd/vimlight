@@ -25,7 +25,7 @@ done
 
 if [ -d $BACKUP_DIR ]; then
 	info "Restoring old configs from ${YELLOW}$BACKUP_DIR $RESET"
-	mv $BACKUP_DIR/.* ~/.
+	mv $BACKUP_DIR/.vim* ~/
 	rm -rf $BACKUP_DIR
 else
 	error "No backup to restore"
