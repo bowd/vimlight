@@ -43,8 +43,11 @@ function setup_config {
 	# Create an empty bundle.local
 	touch ~/.vimrc.bundle.local
 
+	# Setup Vundle
+	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
 	# Install bundles
-	vim -c "BundleInstall"
+	vim +BundleInstall +qall
 
 	echo "Setup complete."
 	echo "Add your personal vim config to ~/.vimrc.local"
