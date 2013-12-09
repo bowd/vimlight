@@ -9,6 +9,9 @@
 	set tabstop=2
 	set softtabstop=2
 	set shiftwidth=2
+	set expandtab
+  " Enable mouse
+  set mouse=a
 
 	" Tab usage shortcuts
 	map <Leader>0 :tab new<CR>
