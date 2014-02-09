@@ -14,7 +14,7 @@
   set mouse=a
 
 	" Tab usage shortcuts
-	map <Leader>0 :tab new<CR>
+	map <Leader>0 :tabnew<CR>
 	map <Leader>- :tabclose<CR>
 	map <Leader>1 1gt
 	map <Leader>2 2gt
@@ -24,11 +24,25 @@
 	map <Leader>6 6gt
 	map <Leader>7 7gt
 
+  " Maximize window               
+  map <Leader>M <C-W>\|<C-W>_
+
 	" Backup files
-	set backupdir=~/.vim/tmp/undo
+	set backupdir=~/.vim/tmp/swap
 	set directory=~/.vim/tmp/swap
 	set viewdir=~/.vim/tmp/view
+  set undodir=~/.vim/tmp/undo
+
+  " Persistent undo
+  set undofile
+  set undolevels=1000
+  set undoreload=10000
+
+  " save and restore folds when a file is closed and re-opened
+  autocmd BufWinLeave *.* mkview
+  autocmd BufWinEnter *.* silent loadview 
 " }
+
 
 " Bundle config {
 	filetype off              
@@ -72,6 +86,16 @@
 		nnoremap <silent> <leader>gw :Gwrite<CR>:GitGutter<CR>
 		nnoremap <silent> <leader>ge :Gedit<CR>
 		nnoremap <silent> <leader>gg :GitGutterToggle<CR>
+"}
+
+" Ctrlp {
+let g:ctrlp_user_command = {
+	\ 'types': {
+		\ 1: ['.git', 'cd %s && git ls-files'],
+		\ 2: ['.hg', 'hg --cwd %s locate -I .'],
+		\ },
+	\ 'fallback': 'find %s -type f'
+	\ }
 "}
 
 
