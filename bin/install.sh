@@ -3,7 +3,7 @@
 set -e
 
 BACKUP_DIR=~/.vim.bak
-REPO="git@github.com:bogdan-dumitru/vimlight.git"
+REPO="https://github.com/bogdan-dumitru/vimlight.git"
 
 GREEN='\033[32m'
 RED='\033[31m'
