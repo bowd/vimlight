@@ -3,7 +3,8 @@
 set -e
 
 BACKUP_DIR=~/.vim.bak
-REPO="https://github.com/bogdan-dumitru/vimlight.git"
+DEFAULT_REPO="https://github.com/bogdan-dumitru/vimlight.git"
+REPO=$(git remote -v | grep origin | head -1 | awk '{print $2}' || echo $DEFAULT_REPO)
 
 GREEN='\033[32m'
 RED='\033[31m'
